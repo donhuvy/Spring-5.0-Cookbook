@@ -55,6 +55,7 @@ Temporary Items
 **/.classpath
 **/.project
 
-
-
-
+**/*.idea
+**/*.iml
+**/*.gradle
+**/build

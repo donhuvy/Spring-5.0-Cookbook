@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.bmuschko:gradle-tomcat-plugin:2.0'
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.3'
     }
 }
 
@@ -23,24 +23,24 @@ sourceCompatibility = 1.8
 version = '1.0'
 
 repositories {
-	mavenCentral()
-	jcenter()
+    mavenCentral()
+    jcenter()
 }
 
 dependencies {
-    compile("org.springframework:spring-context:5.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework:spring-core:5.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework:spring-beans:5.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework:spring-web:5.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework:spring-webmvc:5.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework:spring-context-support:5.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework:spring-tx:5.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework:spring-expression:5.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework:spring-web-reactive:5.0.0.BUILD-SNAPSHOT")
+    compile("org.springframework:spring-context:5.0.0.RELEASE")
+    compile("org.springframework:spring-core:5.0.0.RELEASE")
+    compile("org.springframework:spring-beans:5.0.0.RELEASE")
+    compile("org.springframework:spring-web:5.0.0.RELEASE")
+    compile("org.springframework:spring-webmvc:5.0.0.RELEASE")
+    compile("org.springframework:spring-context-support:5.0.0.RELEASE")
+    compile("org.springframework:spring-tx:5.0.0.RELEASE")
+    compile("org.springframework:spring-expression:5.0.0.RELEASE")
+    compile("org.springframework:spring-web-reactive:5.0.0.M4")
 }
 
 dependencies {
-    compile("io.projectreactor:reactor-core:3.0.3.RELEASE")
+    compile("io.projectreactor:reactor-core:3.1.0.RELEASE")
     compile("javax.servlet:javax.servlet-api:3.1.0")
     compile("javax.servlet.jsp:javax.servlet.jsp-api:2.3.1")
     compile("javax.servlet:jstl:1.2")
@@ -49,7 +49,7 @@ dependencies {
 }
 
 dependencies {
-    testCompile("junit:junit:4.12") 
+    testCompile("junit:junit:4.12")
 }
 
 repositories {
@@ -58,27 +58,23 @@ repositories {
     }
 }
 
-
-
 tomcat {
     httpsPort = 8443
     enableSSL = true
-   
-   users {
+
+    users {
         user {
-            username = 'packt'
-            password = 'packt'
+            username = 'admin'
+            password = 'admin'
             roles = ['manager-gui', 'manager-script']
         }
     }
 }
 
-task deploy (dependsOn: war){
-    
+task deploy(dependsOn: war) {
     copy {
         from "build/libs"
-        into "C:\\MyFiles\\Development\\Servers\\Tomcat9.0\\webapps"
+        into "C:\\tools\\apache-tomcat-9.0.1\\webapps"
         include "*.war"
     }
 }
-

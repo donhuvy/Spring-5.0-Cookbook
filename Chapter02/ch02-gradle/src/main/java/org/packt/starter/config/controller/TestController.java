@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class TestController {
-	
-	@RequestMapping(value="/test")
-	@ResponseBody
-	public String myTest(){
-		return "testing";
-	}
+
+    @RequestMapping(value = "/test")
+    @ResponseBody
+    public String myTest() {
+        return "testing";
+    }
 
 }
